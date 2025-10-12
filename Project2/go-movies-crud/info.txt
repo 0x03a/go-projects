@@ -1,0 +1,30 @@
+🦍 What is Gorilla Mux?
+gorilla/mux is an external package (not part of Go’s standard library) used for HTTP routing and URL matching in Go web applications.
+“mux” stands for HTTP request multiplexer — it decides which handler (function) should process an incoming HTTP request based on its URL, method, etc.
+It is part of the Gorilla Toolkit, a collection of helpful packages for building robust web apps in Go.
+
+📦 Why it’s not part of the main (standard) package
+\The Go standard library already provides a simple router called http.ServeMux in the net/http package.
+However, http.ServeMux is basic — it only matches fixed paths or prefixes, like /home or /api/.
+Gorilla Mux is more powerful — it adds features that the built-in router doesn’t have.
+
+⚙️ Why Gorilla Mux is used (and what makes it better)
+
+Here’s what it adds over net/http:
+
+| **Feature**                         | **`http.ServeMux` (Standard)** | **In Simple Words**                             | **Gorilla Mux**     | **Example**                                   |
+| ----------------------------------- | ------------------------------ | ----------------------------------------------- | ------------------- | --------------------------------------------- |
+| 🧩 **Path Variables**               | ❌ Not supported                | Can’t extract values from URL                   | ✅ Supported         | `/users/{id}` → `id = 101`                    |
+| 📬 **Methods Filtering**            | ❌ Not supported                | Can’t restrict routes by method (GET/POST etc.) | ✅ Supported         | `.Methods("GET", "POST")`                     |
+| 🔢 **Regex Route Matching**         | ❌ Not supported                | Can’t use patterns to match complex URLs        | ✅ Supported         | `/files/{file:[0-9]+}` matches only numbers   |
+| 🔗 **Middleware Support**           | ⚙️ Basic                       | You must write custom code for middlewares      | ✅ Built-in chaining | Example: Logging or Authentication middleware |
+| 🗂️ **Subrouters (Grouped Routes)** | ❌ Not supported                | Can’t group related routes under one base path  | ✅ Supported         | `/api` → `/api/users`, `/api/movies` etc.     |
+| 🧠 **Simplicity**                   | ✅ Very simple                  | Best for small/basic apps                       | ⚙️ Slightly complex | Best for large projects                       |
+| ⚡ **Performance**                   | ✅ Very fast                    | Lightweight                                     | ⚡ Slightly slower   | Because it does more (flexible routing)       |
+
+
+to install it "go get "github.com/gorilla/mux"  "
+
+-------------------------------------------------
+
+
