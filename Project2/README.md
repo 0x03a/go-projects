@@ -99,7 +99,26 @@ curl -X PUT http://localhost:8000/movies/1 \
 curl -X DELETE http://localhost:8000/movies/1
 ```
 
+## Testing with Postman
+
+You can also test all API endpoints using [Postman](https://www.postman.com/):
+
+- Import the endpoints manually or use the above URLs.
+- For POST and PUT requests, set the request body type to **raw** and select **JSON**.
+- Example POST body:
+  ```json
+  {
+    "isbn": "12345",
+    "title": "Inception",
+    "director": {
+      "firstname": "Christopher",
+      "lastname": "Nolan"
+    }
+  }
+  ```
+- Send requests and view responses directly in Postman.
+
 ## Notes
 
 - Data is stored in memory and resets when the server restarts.
-- This project is for educational purposes and does not use persistent storage.
+- This project is for educational purposes and does not use persistent
